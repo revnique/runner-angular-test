@@ -1,12 +1,8 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <img
-    width="97"
-    alt="Runner Logo"
-    src="assets/runner_logo.png"
-  />
+  <img width="97" alt="Runner Logo" src="assets/runner_logo.png" />
   <span>{{ pageTitle }}</span>
-    <div class="spacer"></div>
+  <div class="spacer"></div>
 </div>
 
 <div class="content" role="main">
@@ -16,4 +12,66 @@
   <ul>
     <li *ngFor="let step of requirements">{{step}}</li>
   </ul>
+  <br>
+
+  <div class="main-container">
+    <div class="top-side">
+      <h1>{{statusMessage}}</h1>
+    </div>
+    <div class="container">
+      <div class="left-side">
+        <h1 class="center">Title Search</h1>
+        <form [formGroup]="searchFormGroup" class="form">
+          <div class="title-search">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Title</mat-label>
+              <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="searchBox">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event.option.value)" [displayWith]="getOptionText">
+                <mat-option *ngFor="let title of filteredOptions | async" [value]="title">
+                  <span>{{title.full_name}}</span> |
+                  <small>ID: {{title.id}}</small>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="selected-items m-t-lg">
+            <h1 class="txt-lg">Selected Items: <span>{{selectedItems.length}}</span></h1>
+            <div *ngFor="let item of selectedItems">
+              <mat-card class="m-t-md">
+                <mat-card-title>
+                  {{item.name}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                  {{item.id}}
+                </mat-card-subtitle>
+                <mat-card-content>
+                  {{item.full_name}}
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-stroked-button (click)="removeItem(item.id)">Remove Selected Item</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+            <mat-card class="m-t-md" *ngIf="selectedItems.length === 0">
+              No Items Selected
+            </mat-card>
+            <br>
+            <button mat-stroked-button color="primary" class="m-t-lg" (click)="saveAsset()">Save Selected Items to an Asset </button>
+          </div>
+        </form>
+      </div>
+      <div class="right-side">
+        <h1 class="center">Assets</h1>
+        <div *ngFor="let asset of assetList">
+          <div (click)="editMode(asset)">
+            <div [ngClass]="{'selected':asset.isSelected}" class="asset-list-item">
+              Asset ID: {{asset.id}} | Title Count: {{asset.titles.length}}
+              <button mat-button (click)="deleteAsset(asset)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

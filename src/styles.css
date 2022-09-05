@@ -1,1 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.form {
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.m-sm {
+    margin: 5px;
+}
+
+.m-t-sm {
+    margin-top: 5px;
+}
+
+.m-md {
+    margin: 10px;
+}
+
+.m-t-md {
+    margin-top: 10px;
+}
+
+.m-t-lg {
+    margin-top: 15px;
+}
+
+.m-lg {
+    margin: 15px;
+}
+
+.txt-lg {
+    font-size: 20px !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.selected {
+    background-color: lightcyan;
+}
+
+.main-container {
+    width: 1000px;
+    margin-bottom: 25px;
+}
+
+.container {
+    border-radius: 5px;
+    padding: 15px;
+    border: 1px solid #efefef;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.top-side {
+    height: 50px;
+}
+
+.left-side {
+    width: 70%;
+    height: 100%;
+}
+
+.right-side {
+    width: 30%;
+    height: 100%;
+}
+
+.asset-list-item {
+    margin: 0px 0px 15px 15px;
+    padding: 15px;
+    float: left;
+    border: 1px solid navy;
+    border-radius: 5px;
+}
+
+.asset-list-item:hover {
+    background-color: lightcyan;
+}
