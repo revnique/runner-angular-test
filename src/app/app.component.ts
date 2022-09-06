@@ -62,7 +62,6 @@ export class AppComponent implements OnInit {
   }
 
   onOptionSelected(selectedTitle: Title) {
-    console.log("", selectedTitle);
     this.selectedItems.push(selectedTitle);
     this.showMessage(`Title id: ${selectedTitle.id} has been added to selected items`);
   }
